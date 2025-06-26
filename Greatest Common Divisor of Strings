@@ -1,0 +1,37 @@
+Leetcode 75 Studyplan
+Problem 2 - Leetcode 1071. Greatest Common Divisor of Strings
+
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+        int a = str1.length();
+        int b = str2.length();
+
+        int len = gcd( a, b);
+        
+        String cur = str1.substring(0, len);
+        for(int i=0;i<=b-len;i+=len){
+            String sub = str2.substring(i, i+len);
+            if(!sub.equals(cur) ){
+                return "";
+            }
+        }
+        for(int i=len;i<=a-len;i+=len){
+            String sub = str1.substring(i, i+len);
+            System.out.println(sub);
+            if(!sub.equals(cur) ){
+                return "";
+            }
+        }
+
+        return cur;
+        
+    }
+
+    public static int gcd(int a, int b){
+        if( b == 0 ){
+            return a;
+        }
+        
+        return gcd(b, a%b);
+    }
+}
