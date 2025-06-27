@@ -1,0 +1,44 @@
+Leetcode 75 StudyPlan
+Problem 5 - Leetcode 345. Reverse Vowels of a String
+
+class Solution {
+    public String reverseVowels(String s) {
+        int left = 0;
+        int right = s.length() -1;
+
+        char array[] = new char[ s.length() ];
+        while( left <= right ){
+            if( isVowel(s.charAt(left)) && isVowel(s.charAt(right)) ){
+                char c = s.charAt(left);
+                array[left] = s.charAt( right );
+                array[right] = c;
+                right--;
+                left++;
+            }
+            else if( isVowel(s.charAt(left)) ){
+                array[ right ] = s.charAt(right);
+                right--;
+            }
+            else if( isVowel(s.charAt(right)) ){
+                array[ left ] = s.charAt(left);
+                left++;
+            }
+            else{
+                array[ right ] = s.charAt(right);
+                array[ left ] = s.charAt(left);
+                right--;
+                left++;
+            }
+        }
+
+        return new String( array );
+    }
+
+    public boolean isVowel(char c){
+        return ( c == 'a' || c == 'A' 
+                || c == 'e' || c=='E'
+                || c == 'i' || c == 'I'
+                || c == 'o' || c == 'O'
+                || c == 'u' || c == 'U');
+    }
+}
