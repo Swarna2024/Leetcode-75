@@ -1,0 +1,28 @@
+Leetcode 75 StudyPlan
+Problem 6 - Leetcode 151. Reverse Words in a String
+
+class Solution {
+    public String reverseWords(String s) {
+        StringBuilder result = new StringBuilder();
+
+        int n = s.length() -1;
+        for(int i = n; i>=0; i--){
+            StringBuilder temp = new StringBuilder();
+            if( s.charAt(i) == ' '){
+                continue;
+            }
+            while( i >=0 && s.charAt(i) != ' '){
+                temp.append( s.charAt(i) );
+                i--;
+            }
+
+            if( temp.length() > 0 ){
+                result.append( temp.reverse() );
+                result.append(" ");
+            }
+
+        }
+
+        return result.toString().trim();
+    }
+}
