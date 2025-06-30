@@ -1,0 +1,39 @@
+Leetcode 75 Studyplan
+Problem 9. Leetcode 443. String Compression
+
+class Solution {
+    public int compress(char[] chars) {
+        if( chars.length == 1 ){
+            return 1;
+        }
+        int slow = 0;
+        int fast = 0;
+        
+        int index = 0;
+        
+        int n = chars.length;
+        while( slow < n && fast < n ){
+
+            while( fast < n && chars[slow] == chars[fast]){
+                fast++;
+            }
+
+
+            String count = (fast - slow)+"";
+            System.out.println(count);
+            chars[ index++ ] = chars[ slow ];
+            if( !count.equals("1")){
+
+                for(int i=0;i<count.length();i++){
+                    chars[ index++ ] = count.charAt(i);
+                }
+
+            }
+
+            slow = fast;
+
+        }
+
+        return index;
+    }
+}
