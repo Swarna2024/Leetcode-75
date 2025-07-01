@@ -1,0 +1,24 @@
+// Leetcode 75 StudyPlan
+// Problem 11 - Leetcode 392. Is Subsequence
+
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int slow = 0;
+        int fast = 0;
+
+        int n = s.length();
+        int m = t.length();
+
+        while( slow < n && fast < m ){
+            if( s.charAt( slow ) == t.charAt(fast) ){
+                slow++;
+                fast++;
+            }
+            else{
+                fast++;
+            }
+        }
+
+        return slow == n;
+    }
+}
